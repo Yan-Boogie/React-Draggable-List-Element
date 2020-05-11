@@ -1,0 +1,65 @@
+{
+  "name": "react-draggable-list-element",
+  "version": "1.0.0",
+  "description": "A component to build a list with draggable elements for React project",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./example/webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yan-Boogie/React-Draggable-List-Element.git"
+  },
+  "keywords": [
+    "React",
+    "Draggable",
+    "List"
+  ],
+  "author": "Boogie Yan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yan-Boogie/React-Draggable-List-Element/issues"
+  },
+  "homepage": "https://github.com/Yan-Boogie/React-Draggable-List-Element#readme",
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-flow": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/runtime": "^7.9.6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "eslint": "^7.0.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-flowtype": "^4.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "flow-bin": "^0.108.0",
+    "graphql": "^14.5.8",
+    "react": "^16.9.0",
+    "react-apollo": "^3.1.1",
+    "react-dom": "^16.9.0",
+    "react-hot-loader": "^4.12.14",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1",
+    "cz-conventional-changelog": "^3.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

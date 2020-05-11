@@ -1,0 +1,160 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+    }
+  },
+  "plugins": [
+    "react",
+    "flowtype",
+    "react-hooks",
+  ],
+  "globals": {
+    "document",
+    "localStorage",
+    "window",
+    "alert",
+    "location",
+    "GRAPHQL_HOST",
+    "SUBSCRIPTION_PATH",
+    "SINGLE_UPLOADER_HOST",
+    "Colors",
+    "AUTH_HOST",
+    "fetch",
+    "STATIC_HOST",
+    "confirm",
+    "HTMLSelectElement",
+    "UPLOADER_HOST",
+    "FormData",
+    "XMLHttpRequest",
+    "FileReader",
+    "GOOGLE_WEB_CLIENT_KEY",
+    "YT",
+    "Vimeo",
+    "event",
+    "NODE_ENV",
+    "Image",
+    "gtag",
+    "crypto",
+    "DEFAULT_ACCOUNT",
+    "DEFAULT_PASSWORD",
+    "VERSION_MESSAGE",
+    "File",
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended",
+  ],
+  "rules": {
+    "no-async-promise-executor": [0],
+    "react/static-property-placement": [0],
+    "padding-line-between-statements": [2, {
+      "blankLine": "always",
+      "prev": "*",
+      "next": "return",
+    }, {
+      "blankLine": "always",
+      "prev": [
+        "const",
+        "let",
+        "var",
+      ],
+      "next": "*",
+    }, {
+      "blankLine": "any",
+      "prev": [
+        "const",
+        "let",
+        "var",
+      ],
+      "next": [
+        "const",
+        "let",
+        "var",
+      ],
+    }, {
+      "blankLine": "always",
+      "prev": "directive",
+      "next": "*",
+    }, {
+      "blankLine": "any",
+      "prev": "directive",
+      "next": "directive",
+    }, {
+      "blankLine": "always",
+      "prev": "block-like",
+      "next": "*",
+    }, {
+      "blankLine": "always",
+      "prev": "multiline-const",
+      "next": "*",
+    }, {
+      "blankLine": "always",
+      "prev": "multiline-expression",
+      "next": "*",
+    }, {
+      "blankLine": "always",
+      "prev": "multiline-let",
+      "next": "*",
+    }, {
+      "blankLine": "always",
+      "prev": "multiline-var",
+      "next": "*",
+    }, {
+      "blankLine": "always",
+      "prev": "switch",
+      "next": "*",
+    }, {
+      "blankLine": "always",
+      "prev": "import",
+      "next": "*",
+    }, {
+      "blankLine": "any",
+      "prev": "import",
+      "next": "import",
+    }, {
+      "blankLine": "always",
+      "prev": "*",
+      "next": "case",
+    }, {
+      "blankLine": "any",
+      "prev": "case",
+      "next": "case",
+    }, {
+      "blankLine": "always",
+      "prev": "*",
+      "next": "default",
+    }, {
+      "blankLine": "any",
+      "prev": "case",
+      "next": "default",
+    }],
+    "no-multiple-empty-lines": [2, {
+      "max": 1,
+    }],
+    "no-bitwise": [0, {
+      "allow": ["~"],
+      "int32Hint": true,
+    }],
+    "react/jsx-closing-bracket-location": [2, {
+      "nonEmpty": "after-props",
+      "selfClosing": "after-props",
+    }],
+    "react/jsx-filename-extension": [0],
+    "comma-dangle": [2, "always-multiline"],
+    "jsx-a11y/label-has-for": [0],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-fragments": [0],
+    "arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.6.3",
+    },
+  }
+}
