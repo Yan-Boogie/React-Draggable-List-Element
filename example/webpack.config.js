@@ -35,6 +35,23 @@ module.exports = {
         'babel-loader',
         'react-hot-loader/webpack',
       ],
+    }, {
+      test: /\.css$/i,
+      use: [{
+        loader: 'style-loader',
+      }, {
+        loader: 'css-loader',
+      }],
+    }, {
+      test: /\.(jpe?g|png|gif|svg|xlsx|pdf)$/i,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          hash: 'sha512',
+          digest: 'hex',
+          name: '[hash].[ext]',
+        },
+      }],
     }],
   },
 };

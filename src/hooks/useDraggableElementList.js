@@ -15,11 +15,11 @@ function DraggableListProvider({
   );
 }
 
-export default function useDraggableElementList({
-  options = {
-    listDirection: LIST_DIRECTIONS.HORIZONTAL,
-  },
+export default function useDraggableElementList(options = {
+  listDirection: LIST_DIRECTIONS.HORIZONTAL,
 }) {
+  console.log('options', options);
+
   return {
     DraggableList: ({ children }) => (
       <DraggableListProvider options={options}>
