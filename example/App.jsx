@@ -15,15 +15,34 @@ const classes = {
   `,
 };
 
+const mockItemBundle = [{
+  id: 1,
+  isDraggableDisabled: false,
+}, {
+  id: 2,
+  isDraggableDisabled: false,
+}, {
+  id: 3,
+  isDraggableDisabled: false,
+}, {
+  id: 4,
+  isDraggableDisabled: false,
+}, {
+  id: 5,
+  isDraggableDisabled: false,
+}];
+
 function App() {
-  const { DraggableList } = useDraggableElementList();
+  const { DraggableList } = useDraggableElementList(mockItemBundle);
 
   return (
     <div className={classes.wrapper}>
       <DraggableList>
-        <CustomizeDraggableItem />
-        <CustomizeDraggableItem />
-        <CustomizeDraggableItem />
+        {(data) => {
+          console.log('data', data);
+
+          return <CustomizeDraggableItem />;
+        }}
       </DraggableList>
     </div>
   );

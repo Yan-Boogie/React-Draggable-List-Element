@@ -2,6 +2,8 @@
 
 import React from 'react';
 
-export const DraggableElementListContext = React.createContext('React-Draggable-Element-List-Context');
+export const DraggableElementListOptionContext = React.createContext('React-Draggable-Element-List-Option-Context');
+
+export const DraggableElementListStateContext = React.createContext('React-Draggable-Element-List-State-Context');
 
 export default null;
