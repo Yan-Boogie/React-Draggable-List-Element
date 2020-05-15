@@ -1,4 +1,5 @@
 // @flow
+
 import React, { useState } from 'react';
 
 import DraggableElementList from '../components/DraggableElementList';
@@ -8,10 +9,10 @@ import { LIST_DIRECTIONS } from '../constants/options';
 function getElementsInitBundle(elementsBundle) {
   return elementsBundle.map((el, index) => {
     const initElement = {
-      data: {
+      returns: {
         ...el,
       },
-      draggableElementOptions: el.draggableElementOptions ? {
+      options: el.draggableElementOptions ? {
         ...el.draggableElementOptions,
         isDraggableDisabled: el.draggableElementOptions.isDraggableDisabled || false,
         elementOrder: index,
@@ -21,7 +22,7 @@ function getElementsInitBundle(elementsBundle) {
       },
     };
 
-    delete initElement.data.draggableElementOptions;
+    delete initElement.returns.draggableElementOptions;
 
     return initElement;
   });
@@ -41,7 +42,7 @@ export default function useDraggableElementList(
         <DraggableElementListStateContext.Provider
           value={[draggableElements, setDraggableElements]}>
           <DraggableElementList>
-            {draggableElements.map(({ data }) => children(data))}
+            {draggableElements.map(({ returns }) => children(returns))}
           </DraggableElementList>
         </DraggableElementListStateContext.Provider>
       </DraggableElementListOptionContext.Provider>

@@ -43,7 +43,9 @@ const mockItemBundle = [{
 }];
 
 function App() {
-  const { DraggableList } = useDraggableElementList(mockItemBundle);
+  const { DraggableList, draggableElements } = useDraggableElementList(mockItemBundle);
+
+  console.log('draggableElements', draggableElements);
 
   return (
     <div className={classes.wrapper}>
