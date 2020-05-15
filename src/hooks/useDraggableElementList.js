@@ -6,13 +6,25 @@ import { DraggableElementListOptionContext, DraggableElementListStateContext } f
 import { LIST_DIRECTIONS } from '../constants/options';
 
 function getElementsInitBundle(elementsBundle) {
-  return elementsBundle.map((el, index) => ({
-    data: {
-      ...el,
-    },
-    isDraggableDisabled: el.isDraggableDisabled || false,
-    elementOrder: index,
-  }));
+  return elementsBundle.map((el, index) => {
+    const initElement = {
+      data: {
+        ...el,
+      },
+      draggableElementOptions: el.draggableElementOptions ? {
+        ...el.draggableElementOptions,
+        isDraggableDisabled: el.draggableElementOptions.isDraggableDisabled || false,
+        elementOrder: index,
+      } : {
+        isDraggableDisabled: false,
+        elementOrder: index,
+      },
+    };
+
+    delete initElement.data.draggableElementOptions;
+
+    return initElement;
+  });
 }
 
 export default function useDraggableElementList(

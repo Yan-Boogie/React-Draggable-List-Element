@@ -17,19 +17,29 @@ const classes = {
 
 const mockItemBundle = [{
   id: 1,
-  isDraggableDisabled: false,
+  draggableElementOptions: {
+    isDraggableDisabled: false,
+  },
 }, {
   id: 2,
-  isDraggableDisabled: false,
+  draggableElementOptions: {
+    isDraggableDisabled: false,
+  },
 }, {
   id: 3,
-  isDraggableDisabled: false,
+  draggableElementOptions: {
+    isDraggableDisabled: false,
+  },
 }, {
   id: 4,
-  isDraggableDisabled: false,
+  draggableElementOptions: {
+    isDraggableDisabled: false,
+  },
 }, {
   id: 5,
-  isDraggableDisabled: false,
+  draggableElementOptions: {
+    isDraggableDisabled: false,
+  },
 }];
 
 function App() {
