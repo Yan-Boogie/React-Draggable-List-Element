@@ -7,11 +7,13 @@ import React, {
 } from 'react';
 import EventEmitter from 'events';
 
-type Props = {
+import { CHILD_CONTAINER } from '../constants/classes';
 
+type Props = {
+  children: React.Node,
 };
 
-function DraggableElementPlacementChildContainer({ children }) {
+function DraggableElementPlacementChildContainer({ children }: Props) {
   const floatChildContainer = useRef();
   const [refLoadingEmitter] = useState(new EventEmitter());
   const [refLoading, setRefLoading] = useState(true);
@@ -29,10 +31,10 @@ function DraggableElementPlacementChildContainer({ children }) {
   }, [refLoadingEmitter]);
 
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       {refLoading ? null : children({ floatChildContainerRef: floatChildContainer.current })}
       <div
-        className="react-draggable-element-list-child-container"
+        className={CHILD_CONTAINER}
         ref={floatChildContainer} />
     </div>
   );
