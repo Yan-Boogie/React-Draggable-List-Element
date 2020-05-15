@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import EventEmitter from 'events';
 
-import { CHILD_CONTAINER } from '../constants/classes';
+import { CHILD_CONTAINER, TRIGGERABLE_FEATURE } from '../constants/classes';
 
 type Props = {
   children: React.Node,
@@ -29,6 +29,20 @@ function DraggableElementPlacementChildContainer({ children }: Props) {
       refLoadingEmitter.emit('DONE');
     }
   }, [refLoadingEmitter]);
+
+  useEffect(() => {
+    if (floatChildContainer.current) {
+      const {
+        current: floatChildContainerRef,
+      } = floatChildContainer;
+
+      console.log('floatChildContainerRef', floatChildContainerRef);
+
+      // const childTriggerableFeatures = floatChildContainerRef.querySelectorAll(TRIGGERABLE_FEATURE);
+
+      // console.log('childTriggerableFeatures', childTriggerableFeatures);
+    }
+  }, []);
 
   return (
     <div style={{ position: 'relative' }}>

@@ -37,12 +37,12 @@ export default function useDraggableElementList(
   const [draggableElements, setDraggableElements] = useState(getElementsInitBundle(elementsBundle));
 
   return {
-    DraggableList: ({ children }: { children: Array<React.Node> }) => (
+    DraggableList: ({ children }: { children: Function }) => (
       <DraggableElementListOptionContext.Provider value={options}>
         <DraggableElementListStateContext.Provider
           value={[draggableElements, setDraggableElements]}>
           <DraggableElementList>
-            {draggableElements.map(({ returns }) => children(returns))}
+            {({ returns }) => children({ data: returns })}
           </DraggableElementList>
         </DraggableElementListStateContext.Provider>
       </DraggableElementListOptionContext.Provider>

@@ -45,16 +45,12 @@ const mockItemBundle = [{
 function App() {
   const { DraggableList, draggableElements } = useDraggableElementList(mockItemBundle);
 
-  console.log('draggableElements', draggableElements);
-
   return (
     <div className={classes.wrapper}>
       <DraggableList>
-        {(data) => {
-          console.log('data', data);
-
-          return <CustomizeDraggableItem />;
-        }}
+        {({ data }) => (
+          <CustomizeDraggableItem data={data} />
+        )}
       </DraggableList>
     </div>
   );

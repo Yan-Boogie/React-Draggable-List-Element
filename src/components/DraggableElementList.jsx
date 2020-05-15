@@ -1,29 +1,31 @@
 // @flow
 
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 
 import DraggableElementsWrapper from './DraggableElementsWrapper';
 import DraggableElementPlacement from './DraggableElementPlacement';
 import DraggableElementPlacementChildContainer from './DraggableElementPlacementChildContainer';
+import { DraggableElementListStateContext } from '../constants/context';
 
 type Props = {
-  children: Array<React.Node>,
+  children: Function,
 };
 
 function DraggableElementList({
   children,
 }: Props) {
+  const [draggableElements] = useContext(DraggableElementListStateContext);
 
   return (
     <React.Fragment>
       <DraggableElementsWrapper>
-        {({}) => children.map(child => (
-          <DraggableElementPlacementChildContainer>
+        {({}) => draggableElements.map(({ returns, options }) => (
+          <DraggableElementPlacementChildContainer key={options.elementOrder}>
             {({ floatChildContainerRef }) => (
               <DraggableElementPlacement>
                 {ReactDOM.createPortal(
-                  child,
+                  children({ returns }),
                   floatChildContainerRef,
                 )}
               </DraggableElementPlacement>
