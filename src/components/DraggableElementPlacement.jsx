@@ -2,23 +2,19 @@
 
 import React from 'react';
 import { css } from 'emotion';
-import { TRIGGERABLE_FEATURE } from '../constants/classes';
 import { DRAGGABLE_ELEMENT_PLACEMENT } from '../constants/zIndexes';
 
-const styles = {
-  placement: {
-    positition: 'absolute',
-    height: '100%',
-    width: '100%',
-    left: 0,
-    top: 0,
-  },
-};
+const placementClassName = css`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: ${DRAGGABLE_ELEMENT_PLACEMENT};
+`;
 
-const triggerableFeatureClassName = css`
-  .${TRIGGERABLE_FEATURE} {
-    z-index: ${DRAGGABLE_ELEMENT_PLACEMENT + 1};
-  }
+const invisibleText = css`
+  display: none;
 `;
 
 type Props = {
@@ -28,9 +24,12 @@ type Props = {
 // 處理個別item drag feature
 function DraggableElementPlacement({ children }: Props) {
   return (
-    <div style={styles.placement} className={triggerableFeatureClassName}>
+    <React.Fragment>
       {children}
-    </div>
+      <div className={placementClassName} role="button" tabIndex="-1" onMouseDown={() => console.log('placement MOUSEDOWN')}>
+        <h3 className={invisibleText}>React-Draggable-Element-Placement</h3>
+      </div>
+    </React.Fragment>
   );
 }
 

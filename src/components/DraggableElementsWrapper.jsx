@@ -8,11 +8,7 @@ type Props = {
 
 // 處理dom clone等等由整個list區域負責之drag feature
 function DraggableElementsWrapper({ children }: Props) {
-  return (
-    <div>
-      {children({})}
-    </div>
-  );
+  return children({});
 }
 
 export default DraggableElementsWrapper;

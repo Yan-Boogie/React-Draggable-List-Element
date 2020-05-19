@@ -7,7 +7,10 @@ import appleImage from '../apple.jpeg';
 
 function CustomizeDraggableItem() {
   return (
-    <img className={TRIGGERABLE_FEATURE} src={appleImage} alt="" style={{ width: 130 }} />
+    <div>
+      <img src={appleImage} alt="" style={{ width: 130 }} />
+      <button type="button" className={TRIGGERABLE_FEATURE} style={{ height: 10, width: 10 }}>triggerable</button>
+    </div>
   );
 }
 
