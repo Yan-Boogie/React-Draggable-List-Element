@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 
-import DraggableElementList from '../components/DraggableElementList';
-import { DraggableElementListOptionContext, DraggableElementListStateContext } from '../constants/context';
+import DraggableElementsList from '../components/DraggableElementsList';
+import { DraggableElementsListOptionContext, DraggableElementsListStateContext } from '../constants/context';
 import { LIST_DIRECTIONS } from '../constants/options';
 
 function getElementsInitBundle(elementsBundle) {
@@ -28,7 +28,7 @@ function getElementsInitBundle(elementsBundle) {
   });
 }
 
-export default function useDraggableElementList(
+export default function useDraggableElementsList(
   elementsBundle,
   options = {
     listDirection: LIST_DIRECTIONS.HORIZONTAL,
@@ -38,14 +38,14 @@ export default function useDraggableElementList(
 
   return {
     DraggableList: ({ children }: { children: Function }) => (
-      <DraggableElementListOptionContext.Provider value={options}>
-        <DraggableElementListStateContext.Provider
+      <DraggableElementsListOptionContext.Provider value={options}>
+        <DraggableElementsListStateContext.Provider
           value={[draggableElements, setDraggableElements]}>
-          <DraggableElementList>
+          <DraggableElementsList>
             {({ returns }) => children({ data: returns })}
-          </DraggableElementList>
-        </DraggableElementListStateContext.Provider>
-      </DraggableElementListOptionContext.Provider>
+          </DraggableElementsList>
+        </DraggableElementsListStateContext.Provider>
+      </DraggableElementsListOptionContext.Provider>
     ),
     draggableElements,
   };

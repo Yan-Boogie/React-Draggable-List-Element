@@ -5,7 +5,7 @@ import React from 'react';
 import { css } from 'emotion';
 import { hot } from 'react-hot-loader';
 
-import useDraggableElementList from '../src/hooks/useDraggableElementList';
+import useDraggableElementsList from '../src/hooks/useDraggableElementsList';
 import CustomizeDraggableItem from './components/CustomizeDraggableItem';
 
 const classes = {
@@ -43,7 +43,7 @@ const mockItemBundle = [{
 }];
 
 function App() {
-  const { DraggableList, draggableElements } = useDraggableElementList(mockItemBundle);
+  const { DraggableList, draggableElements } = useDraggableElementsList(mockItemBundle);
 
   return (
     <div className={classes.wrapper}>
