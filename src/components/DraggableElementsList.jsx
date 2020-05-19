@@ -4,10 +4,10 @@ import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import { css } from 'emotion';
 
-import DraggableElementsWrapper from './DraggableElementsWrapper';
 import DraggableElementPlacement from './DraggableElementPlacement';
 import DraggableElementChildPlacementContainer from './DraggableElementChildPlacementContainer';
 import { DraggableElementsListStateContext, DraggableElementsListOptionContext } from '../constants/context';
+import useDraggableFeature from '../hooks/useDraggableFeature';
 
 // wrapper排序option
 const wrapper = ({ listDirection }) => css`
@@ -25,14 +25,16 @@ function DraggableElementsList({
 }: Props) {
   const [draggableElements] = useContext(DraggableElementsListStateContext);
   const { listDirection } = useContext(DraggableElementsListOptionContext);
+  const { DraggableFeatureProvider } = useDraggableFeature();
 
   return (
-    <div className={wrapper({ listDirection })}>
-      <DraggableElementsWrapper>
-        {({}) => draggableElements.map(({ returns, options }) => (
+    <DraggableFeatureProvider>
+      <div className={wrapper({ listDirection })}>
+        {draggableElements.map(({ returns, options }) => (
           <DraggableElementChildPlacementContainer key={options.elementOrder}>
             {({ floatingChildContainer }) => (
-              <DraggableElementPlacement>
+              <DraggableElementPlacement
+                options={options}>
                 {ReactDOM.createPortal(
                   children({ returns }),
                   floatingChildContainer,
@@ -41,8 +43,8 @@ function DraggableElementsList({
             )}
           </DraggableElementChildPlacementContainer>
         ))}
-      </DraggableElementsWrapper>
-    </div>
+      </div>
+    </DraggableFeatureProvider>
   );
 }
 
