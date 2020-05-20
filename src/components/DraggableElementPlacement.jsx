@@ -38,14 +38,16 @@ function DraggableElementPlacement({ children, options }: Props) {
   const { draggingElementOrder, setCloneElement } = useDraggableFeature();
   const placementRef = useRef();
 
-  const startArrange = useCallback(({ clientX, clientY }) => {
+  console.log('draggingElementOrder', draggingElementOrder);
+
+  const startArrange = ({ clientX, clientY }) => {
     const childPlacementNode = placementRef.current.parentNode;
     const childNode = childPlacementNode.querySelector(`.${DRAGGABLE_ELEMENT}`);
 
     setCloneElement({
-      clientX, clientY, cloneNode: childNode, elementOrder,
+      clientX, clientY, nodeWillClone: childNode, elementOrder,
     });
-  }, [setCloneElement, elementOrder]);
+  };
 
   return (
     <React.Fragment>

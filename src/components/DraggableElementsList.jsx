@@ -8,12 +8,14 @@ import DraggableElementPlacement from './DraggableElementPlacement';
 import DraggableElementChildPlacementContainer from './DraggableElementChildPlacementContainer';
 import { DraggableElementsListStateContext, DraggableElementsListOptionContext } from '../constants/context';
 import useDraggableFeature from '../hooks/useDraggableFeature';
+import DraggableClonedElementContainer from './DraggableClonedElementContainer';
 
 // wrapper排序option
 const wrapper = ({ listDirection }) => css`
   width: 100%;
   height: 100%;
   display: flex;
+  position: relative;
 `;
 
 type Props = {
@@ -43,6 +45,7 @@ function DraggableElementsList({
             )}
           </DraggableElementChildPlacementContainer>
         ))}
+        <DraggableClonedElementContainer />
       </div>
     </DraggableFeatureProvider>
   );

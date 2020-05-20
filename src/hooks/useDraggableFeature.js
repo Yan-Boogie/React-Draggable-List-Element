@@ -9,33 +9,52 @@ import EventEmitter from 'events';
 
 export const START_DRAGGING = 'E/START_DRAGGING';
 
-const DraggingCloneElementStateContext = React.createContext([]);
+const DraggingElementOrderStateContext = React.createContext([]);
+const ClonedNodeStateContext = React.createContext([]);
 
 function DraggableFeatureProvider({ children }) {
   const [draggingElementOrder, setDraggingElementOrder] = useState(-1);
+  const [clonedNode, setClonedNode] = useState(null);
 
   return (
-    <DraggingCloneElementStateContext.Provider
+    <DraggingElementOrderStateContext.Provider
       value={[draggingElementOrder, setDraggingElementOrder]}>
-      {children}
-    </DraggingCloneElementStateContext.Provider>
+      <ClonedNodeStateContext.Provider value={[clonedNode, setClonedNode]}>
+        {children}
+      </ClonedNodeStateContext.Provider>
+    </DraggingElementOrderStateContext.Provider>
   );
 }
 
 export default function useDraggableFeature() {
   const [
-    draggingElementOrder, setDraggingElementOrder
-  ] = useContext(DraggingCloneElementStateContext);
+    draggingElementOrder, setDraggingElementOrder,
+  ] = useContext(DraggingElementOrderStateContext);
+
+  const [clonedNode, setClonedNode] = useContext(ClonedNodeStateContext);
 
   const setCloneElement = useCallback(({
-    clientX, clientY, cloneNode, elementOrder,
+    clientX, clientY, nodeWillClone, elementOrder,
   }) => {
-    console.log('STUFF', clientX, clientY, cloneNode, elementOrder);
-  }, []);
+    // console.log('STUFF', clientX, clientY, nodeWillClone, elementOrder);
+
+    const clonedElement = nodeWillClone.cloneNode(true);
+
+    setClonedNode(clonedElement);
+    setDraggingElementOrder(elementOrder);
+  }, [setDraggingElementOrder, setClonedNode]);
+
+  const removeCloneElement = useCallback(() => {
+    console.log('REMOVE FIRED!!');
+
+    setDraggingElementOrder(-1);
+  }, [setDraggingElementOrder]);
 
   return {
+    clonedNode,
     draggingElementOrder,
     setCloneElement,
+    removeCloneElement,
     DraggableFeatureProvider,
   };
 }
